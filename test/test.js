@@ -21,8 +21,12 @@ var MyValidator = {
   }
 };
 
+
+/* ==== Step1: intial your validateStrategy instance ====*/
 var stategy = new nx.ValidateStrategy([nx.Validator,MyValidator]);
 
+
+/* ==== Step2: add your validte rules ====*/
 stategy.add('username',{
   validator:'isEmpty',
   data:null,
@@ -52,7 +56,7 @@ function validate(){
   //get latest dataSource:
   updateDataSource();
 
-  //validate:
+  /* ==== Step3: do validate ====*/
   stategy.validate(['username','password'],dataSource).then(function(success){
     console.log('success!');
   },function(errors){
