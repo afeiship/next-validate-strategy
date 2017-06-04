@@ -34,13 +34,13 @@
             nx.each( validateStrategies ,function( _, strategy ){
               var strategyValidator = self.getStrategyValidator(strategy.validator);
               var validator = self.getValidator(strategyValidator.validator);
-              var isEqualCondition = validator.call(null, inDataSource[item], strategy.data);
+              var equal = validator.call(null, inDataSource[item], strategy.data);
               if(strategyValidator.invert){
-                if(!isEqualCondition){
+                if(!equal){
                   errors.push(strategy);
                 }
               }else{
-                if(isEqualCondition){
+                if(equal){
                   errors.push(strategy);
                 }
               }
