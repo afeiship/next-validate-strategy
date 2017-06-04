@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+<body>
+
+  <form action="./">
+    <p>
+      <label for="username">Username</label>
+      <input type="text" name="" id="username">
+    </p>
+
+    <p>
+      <label for="password">Password</label>
+      <input type="password" name="" id="password">
+    </p>
+
+    <select name="sex" id="sel">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <div class="checkbox-group">
+      <strong>爱好</strong>
+      <span>
+        <input type="checkbox" name="hobby" id="chk1">
+        <label for="chk1">足球</label>
+      </span>
+      <span>
+        <input type="checkbox" name="hobby" id="chk2">
+        <label for="chk2">游戏</label>
+      </span>
+    </div>
+    <button type="button">Submit</button>
+  </form>
+
+  <script src="../node_modules/next-js-core2/dist/next-js-core2.js"></script>
+  <script src="../node_modules/next-validator/dist/next-validator.js"></script>
+  <script src="../node_modules/q/q.js"></script>
+  <script src="../dist/next-validate-strategy.js"></script>
+  <script src="./test.js"></script>
+</body>
+</html>
