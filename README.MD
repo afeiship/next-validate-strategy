@@ -43,9 +43,8 @@ stategy.add('password',{
 
 stategy.addAll('password',[
   {
-    validator:'isInRange',
+    validator:'!isInRange',
     data:{ start:3,end:6},
-    invert:true,
     msg:'密码区间为3-6'
   },
   {
@@ -72,6 +71,7 @@ function validate(){
 btn.onclick = function(){
   validate();
 };
+
 
 
 

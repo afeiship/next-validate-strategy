@@ -30,11 +30,12 @@
         var errors = [];
         return Q.Promise(function(resolve,reject){
           nx.each(inKeys,function(_,item){
-            var validateStrategies = this._cache[item];
+            var validateStrategies = self._cache[item];
             nx.each( validateStrategies ,function( _, strategy ){
-              var validator = this.getValidator(strategy.validator);
+              var strategyValidator = self.getStrategyValidator(strategy.validator);
+              var validator = self.getValidator(strategyValidator.validator);
               var isEqualCondition = validator.call(null, inDataSource[item], strategy.data);
-              if(strategy.invert){
+              if(strategyValidator.invert){
                 if(!isEqualCondition){
                   errors.push(strategy);
                 }
@@ -43,10 +44,16 @@
                   errors.push(strategy);
                 }
               }
-            },this);
-          },self);
+            });
+          });
           return !!errors.length ? reject(errors) : resolve(true);
         });
+      },
+      getStrategyValidator: function(inValidator){
+        if(inValidator.indexOf('!')===0){
+          return {  validator: inValidator.slice(1), invert:true };
+        }
+        return { validator: inValidator, invert: false };
       },
       getValidator:function(inName){
         var validators = this._validators;
