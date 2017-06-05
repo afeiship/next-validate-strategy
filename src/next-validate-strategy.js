@@ -55,7 +55,7 @@
         }
         return { validator: inValidator, invert: false };
       },
-      getStrategies:function(inName){
+      getStrategy:function(inName){
         return this._cache[inName];
       },
       getValidator:function(inName){
