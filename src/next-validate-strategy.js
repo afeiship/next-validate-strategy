@@ -30,7 +30,7 @@
         var errors = [];
         return Q.Promise(function(resolve,reject){
           nx.each(inKeys,function(_,item){
-            var validateStrategies = self._cache[item];
+            var validateStrategies = self.getStrategies[item];
             nx.each( validateStrategies ,function( _, strategy ){
               var strategyValidator = self.getStrategyValidator(strategy.validator);
               var validator = self.getValidator(strategyValidator.validator);
@@ -54,6 +54,9 @@
           return {  validator: inValidator.slice(1), invert:true };
         }
         return { validator: inValidator, invert: false };
+      },
+      getStrategies:function(inName){
+        return this._cache[inName];
       },
       getValidator:function(inName){
         var validators = this._validators;
